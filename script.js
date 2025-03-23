@@ -30,5 +30,9 @@
                 }
             });
             
-            document.querySelector(".yes").addEventListener("click", showSuccessMessage);
+            buttonsContainer.addEventListener("click", function(event) {
+                if (event.target.tagName === "BUTTON") {
+                    showSuccessMessage();
+                }
+            });
         });
