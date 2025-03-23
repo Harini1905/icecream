@@ -7,7 +7,30 @@ function showSuccessMessage() {
     `;
 }
 
-function changeToYes(button) {
-    button.innerText = 'Yes';
-    button.setAttribute('onclick', 'showSuccessMessage()');
+function swapButtons() {
+    let yesButton = document.querySelector('.yes');
+    let noButton = document.querySelector('.no');
+    
+    // Swap button positions
+    yesButton.classList.toggle('yes');
+    yesButton.classList.toggle('no');
+    noButton.classList.toggle('no');
+    noButton.classList.toggle('yes');
+    
+    // Swap text content
+    let tempText = yesButton.innerText;
+    yesButton.innerText = noButton.innerText;
+    noButton.innerText = tempText;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    let buttonsContainer = document.querySelector(".buttons");
+    
+    buttonsContainer.addEventListener("mouseover", function(event) {
+        if (event.target.classList.contains("no")) {
+            swapButtons();
+        }
+    });
+    
+    document.querySelector(".yes").addEventListener("click", showSuccessMessage);
+});
